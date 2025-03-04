@@ -3,6 +3,11 @@ package com.grocery.user;
 import com.grocery.security.JwtUtil;
 import com.grocery.security.auth.AuthRequest;
 import com.grocery.user.contracts.GenerateTokenResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
+@Tag(name = "User Management", description = "Endpoints for managing users")
 public class UserController {
 
     @Autowired
