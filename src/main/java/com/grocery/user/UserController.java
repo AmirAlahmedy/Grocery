@@ -2,9 +2,9 @@ package com.grocery.user;
 
 import com.grocery.security.JwtUtil;
 import com.grocery.security.auth.AuthRequest;
-import com.grocery.user.UserInfo;
-import com.grocery.user.UserInfoService;
+import com.grocery.user.contracts.GenerateTokenResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -48,12 +48,14 @@ public class UserController {
     }
 
     @PostMapping("/generateToken")
-    public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
+    public ResponseEntity<GenerateTokenResponse> authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authRequest.username(), authRequest.password())
         );
         if (authentication.isAuthenticated()) {
-            return jwtService.generateToken(authRequest.username());
+            String token = jwtService.generateToken(authRequest.username());
+            ResponseEntity<GenerateTokenResponse> resp = ResponseEntity.ok(new GenerateTokenResponse(token));
+            return resp;
         } else {
             throw new UsernameNotFoundException("Invalid user request!");
         }
