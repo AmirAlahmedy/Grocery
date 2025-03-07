@@ -34,3 +34,15 @@ springdoc:
   api-docs:
     path: /v3/api-docs
   packagesToScan: com.grocery
+
+logging:
+  level:
+    root: INFO
+    com.grocery.security: DEBUG
+    com.grocery.config: WARN
+    com.grocery.user: ERROR
+  file:
+    name: logs/grocery.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
