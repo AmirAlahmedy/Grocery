@@ -22,6 +22,9 @@ spring:
       chat:
         model: ORCA_MINI
         temperature: 0.7
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    enabled: true
 
 # JWT configuration
 jwt:

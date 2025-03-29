@@ -16,7 +16,7 @@ public class ProductService {
     }
 
     public Optional<Product> getProductById(String id) {
-        return products.stream().filter(product -> product.getId().equals(id)).findFirst();
+        return products.stream().filter(product -> product.getProductId().equals(id)).findFirst();
     }
 
     public Product createProduct(Product product) {
@@ -34,6 +34,6 @@ public class ProductService {
     }
 
     public boolean deleteProduct(String id) {
-        return products.removeIf(product -> product.getId().equals(id));
+        return products.removeIf(product -> product.getProductId().equals(id));
     }
 }
