@@ -1,0 +1,44 @@
+services:
+  db:
+    build: docker/mysql
+    container_name: mysql-container
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: StrongP@ssw0rd!2025
+      MYSQL_DATABASE: grocery
+      MYSQL_USER: user
+      MYSQL_PASSWORD: UserP@ssw0rd!2024
+  external_service:
+    build: docker/hoverfly
+    container_name: simulated-services-container
+    ports:
+      - "8500:8500"
+      - "8888:8888"
+    volumes:
+      # Map host directory to container directory
+      - ./docker/hoverfly/config:/hoverfly/config
+    environment:
+      HOVERFLY_MODE: simulate
+  app:
+    build: .
+    container_name: app-container
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - app-data:/app/external
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/grocery
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: UserP@ssw0rd!2024
+
+volumes:
+  app-data:
+  mysql-data:
+
