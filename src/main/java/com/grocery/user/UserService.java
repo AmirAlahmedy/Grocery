@@ -7,25 +7,30 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserInfoService implements UserDetailsService {
+public class UserService implements UserDetailsService {
     @Autowired
-    private UserInfoRepository repository;
+    private UserRepository repository;
     @Autowired
     private PasswordEncoder encoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        Optional<UserInfo> userDetails = repository.findByEmail(username);
+        Optional<User> userDetails = repository.findByEmail(username);
         return userDetails.map(UserInfoDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
     }
 
-    public String addUser(UserInfo userInfo) {
-        userInfo.setPassword(encoder.encode(userInfo.getPassword()));
-        repository.save(userInfo);
+    public String addUser(User user) {
+        user.setPassword(encoder.encode(user.getPassword()));
+        repository.save(user);
         return "User Added Successfully";
+    }
+
+    public List<User> getAllUsers() {
+        return repository.findAll();
     }
 }

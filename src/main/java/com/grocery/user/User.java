@@ -39,10 +39,12 @@ public class User {
     @JoinColumn(name = "address_id")
     private Address address;
 
-    @Column(name = "registration_date", nullable = false)
+    @Column(name = "registration_date")
     private LocalDateTime registrationDate;
 
-    @Column(name = "is_active", nullable = false)
+    @Column(name = "is_active")
     private boolean isActive;
+
+    private String roles;
 
 }

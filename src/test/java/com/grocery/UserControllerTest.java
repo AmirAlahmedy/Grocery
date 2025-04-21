@@ -2,9 +2,9 @@ package com.grocery;
 
 import com.grocery.security.JwtUtil;
 import com.grocery.security.auth.AuthRequest;
+import com.grocery.user.User;
 import com.grocery.user.UserController;
-import com.grocery.user.UserInfo;
-import com.grocery.user.UserInfoService;
+import com.grocery.user.UserService;
 import com.grocery.user.contracts.GenerateTokenResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,7 +25,7 @@ import static org.mockito.Mockito.*;
 class UserControllerTest {
 
     @Mock
-    private UserInfoService userInfoService;
+    private UserService userInfoService;
 
     @Mock
     private JwtUtil jwtUtil;
@@ -49,10 +49,10 @@ class UserControllerTest {
 
     @Test
     void testAddNewUser() {
-        UserInfo userInfo = new UserInfo();
-        when(userInfoService.addUser(any(UserInfo.class))).thenReturn("User added successfully");
+        User user = new User();
+        when(userInfoService.addUser(any(User.class))).thenReturn("User added successfully");
 
-        String response = userController.addNewUser(userInfo);
+        String response = userController.addNewUser(user);
 
         assertEquals("User added successfully", response);
     }

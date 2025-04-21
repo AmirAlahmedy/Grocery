@@ -14,10 +14,10 @@ public class UserInfoDetails implements UserDetails {
     private String password;
     private List<GrantedAuthority> authorities;
 
-    public UserInfoDetails(UserInfo userInfo) {
-        username = userInfo.getName();
-        password = userInfo.getPassword();
-        authorities = List.of(userInfo.getRoles().split(","))
+    public UserInfoDetails(User user) {
+        username = user.getEmail();
+        password = user.getPassword();
+        authorities = List.of(user.getRoles().split(","))
                 .stream()
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toUnmodifiableList());

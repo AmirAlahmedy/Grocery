@@ -13,13 +13,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/auth")
 @Tag(name = "User Management", description = "Endpoints for managing users")
 public class UserController {
 
     @Autowired
-    private UserInfoService service;
+    private UserService service;
 
     @Autowired
     private JwtUtil jwtService;
@@ -33,8 +35,8 @@ public class UserController {
     }
 
     @PostMapping("/addNewUser")
-    public String addNewUser(@RequestBody UserInfo userInfo) {
-        return service.addUser(userInfo);
+    public String addNewUser(@RequestBody User user) {
+        return service.addUser(user);
     }
 
     @GetMapping("/user/userProfile")
@@ -61,5 +63,10 @@ public class UserController {
         } else {
             throw new UsernameNotFoundException("Invalid user request!");
         }
+    }
+
+    @GetMapping("/users")
+    public List<User> getAllUsers() {
+        return service.getAllUsers();
     }
 }
