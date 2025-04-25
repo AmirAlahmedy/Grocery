@@ -4,6 +4,11 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <include file="data/products/import-products.xml" relativeToChangelogFile="true"/>
+    <changeSet id="products-data" author="AmirAlahmedy">
+        <sqlFile path="insert.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="false"
+                 stripComments="true"/>
+    </changeSet>
 
 </databaseChangeLog>

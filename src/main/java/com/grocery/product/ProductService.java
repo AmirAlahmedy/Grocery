@@ -1,5 +1,6 @@
 package com.grocery.product;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,6 +12,9 @@ public class ProductService {
 
     private final List<Product> products = new ArrayList<>();
 
+    @Autowired
+    ProductRepository repository;
+
     public List<Product> getAllProducts() {
         return products;
     }
@@ -21,6 +25,7 @@ public class ProductService {
 
     public Product createProduct(Product product) {
         products.add(product);
+        repository.save(product);
         return product;
     }
 
