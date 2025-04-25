@@ -16,11 +16,11 @@ public class ProductService {
     ProductRepository repository;
 
     public List<Product> getAllProducts() {
-        return products;
+        return repository.findAll();
     }
 
     public Optional<Product> getProductById(String id) {
-        return products.stream().filter(product -> product.getProductId().equals(id)).findFirst();
+        return Optional.ofNullable(repository.findByProductId(id));
     }
 
     public Product createProduct(Product product) {

@@ -10,12 +10,10 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    // Basic CRUD operations are inherited from JpaRepository
+    Product findByProductId(String productId);
 
     // Add custom query methods if needed, e.g.,
     List<Product> findByNameContainingIgnoreCase(String name); // Search by name
-
-//    List<Product> findByCategoryId(Long categoryId);
 
     List<Product> findByIsAvailableTrue(); // find only available products
 
