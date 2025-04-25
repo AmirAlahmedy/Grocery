@@ -10,4 +10,5 @@ public class LoggerFactoryGrocery {
     public Logger getLogger(Class<?> clazz) {
         return LoggerFactory.getLogger(clazz);
     }
+
 }

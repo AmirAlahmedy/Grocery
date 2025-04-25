@@ -1,6 +1,7 @@
 package com.grocery.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Primary
 public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository repository;
@@ -32,5 +34,10 @@ public class UserService implements UserDetailsService {
 
     public List<User> getAllUsers() {
         return repository.findAll();
+    }
+
+    public User getUser(String id) {
+        return repository.findByUserId(id)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + id));
     }
 }

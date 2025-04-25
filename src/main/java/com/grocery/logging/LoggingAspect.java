@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoggingAspect {
 
-    private LoggerFactoryGrocery loggerFactory;
+    private final LoggerFactoryGrocery loggerFactory;
 
     @Autowired
     public LoggingAspect(LoggerFactoryGrocery loggerFactory) {
@@ -22,12 +22,12 @@ public class LoggingAspect {
     @Before("execution(* com.grocery..*(..)) && !within(com.grocery.logging..*) && !within(com.grocery.security..*)")
     public void logBefore(JoinPoint joinPoint) {
         Logger logger = loggerFactory.getLogger(joinPoint.getTarget().getClass());
-        logger.info("Entering method: " + joinPoint.getSignature().getName());
+        logger.info("Entering method: {}", joinPoint.getSignature().getName());
     }
 
     @AfterReturning(pointcut = "execution(* com.grocery..*(..)) && !within(com.grocery.logging..*) && !within(com.grocery.security..*)", returning = "result")
     public void logAfterReturning(JoinPoint joinPoint, Object result) {
         Logger logger = loggerFactory.getLogger(joinPoint.getTarget().getClass());
-        logger.info("Exiting method: " + joinPoint.getSignature().getName() + " with result: " + result);
+        logger.info("Exiting method: {} with result: {}", joinPoint.getSignature().getName(), result);
     }
 }
