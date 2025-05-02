@@ -26,7 +26,7 @@ services:
     environment:
       HOVERFLY_MODE: simulate
   app:
-    build: .
+    build: ./backend
     container_name: app-container
     restart: unless-stopped
     ports:
