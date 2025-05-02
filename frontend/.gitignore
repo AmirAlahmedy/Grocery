@@ -1,0 +1,34 @@
+# Angular specific
+.angular/
+dist/
+out-tsc/
+node_modules/
+package-lock.json
+yarn.lock
+
+# Compiled output
+*.js
+*.js.map
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Environment files
+src/environments/environment*.ts
+
+# Coverage reports
+coverage/
