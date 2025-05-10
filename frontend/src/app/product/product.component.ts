@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../product';
+import {RouterLink, RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-product',
-  imports: [],
+  imports: [RouterLink],
   template: `
   <section class="listing">
       <img
@@ -15,6 +16,7 @@ import { Product } from '../product';
       />
       <h2 class="listing-heading">{{ product.name }}</h2>
       <p class="listing-location">{{ product.price }}, {{ product.rating }}</p>
+      <a [routerLink]="['/details', product.id]">Learn More</a>
     </section>
   `,
   styleUrls: ['./product.component.css'],

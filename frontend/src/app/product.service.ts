@@ -71,7 +71,7 @@ export class ProductService {
   getAllProducts(): Product[] {
     return this.products;
   }
-  getHousingLocationById(id: number): Product | undefined {
+  getProductById(id: number): Product | undefined {
     return this.products.find((product) => product.id === id);
   }
 }
