@@ -1,6 +1,6 @@
 import {Routes} from '@angular/router';
-import {HomeComponent} from './home/home.component';
-import {DetailsComponent} from './details/details.component';
+import {HomeComponent} from './pages/home/home.component';
+import {ProductDetailsComponent} from './pages/product-details/product-details.component';
 
 const routeConfig: Routes = [
   {
@@ -9,9 +9,9 @@ const routeConfig: Routes = [
     title: 'Home page',
   },
   {
-    path: 'details/:id',
-    component: DetailsComponent,
-    title: 'Home details',
+    path: 'products/:id',
+    component: ProductDetailsComponent,
+    title: 'Product details',
   },
 ];
 

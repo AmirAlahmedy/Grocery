@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { Product } from '../product';
+import { Product } from '../../models/product';
 import { CommonModule } from '@angular/common';
-import { ProductComponent } from '../product/product.component';
-import { ProductService } from '../product.service';
+import { ProductCardComponent } from '../../components/product-card/product-card.component';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, ProductComponent],
+  imports: [CommonModule, ProductCardComponent],
   template: `
    <section>
       <form>  
@@ -15,9 +15,9 @@ import { ProductService } from '../product.service';
       </form>
     </section>
     <section class="results">
-      <app-product 
+      <app-product-card 
         *ngFor="let product of products"
-        [product]="product" ></app-product>
+        [product]="product" ></app-product-card>
     </section>
 
   `,

@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {CommonModule} from '@angular/common';
-import { ProductService } from '../product.service';
-import { Product } from '../product';
+import { ProductService } from '../../services/product.service';
+import { Product } from '../../models/product';
 
 @Component({
-  selector: 'app-details',
+  selector: 'app-product-details',
   imports: [],
   template: `
     <article>
@@ -29,9 +29,9 @@ import { Product } from '../product';
       </section>
     </article>
   `,
-  styleUrls: ['./details.component.css'],
+  styleUrls: ['./product-details.component.css'],
 })
-export class DetailsComponent {
+export class ProductDetailsComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
   productService: ProductService = inject(ProductService);
   product: Product | undefined;
