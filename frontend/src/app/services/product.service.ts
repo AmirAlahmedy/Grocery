@@ -6,7 +6,7 @@ import { Product } from '../models/product';
 })
 export class ProductService {
 
-  readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
+  readonly baseUrl = '../../assets';
 
   products = [
     {
@@ -14,7 +14,7 @@ export class ProductService {
       name: 'Apple',
       price: 1.5,
       description: 'Fresh and juicy apples',
-      imageUrl: `${this.baseUrl}/example-house.jpg`,
+      imageUrl: `${this.baseUrl}/apple.jpg`,
       category: 'Fruits',
       stock: 100,
       rating: 4.5,
@@ -25,7 +25,7 @@ export class ProductService {
       name: 'Banana',
       price: 0.8,
       description: 'Sweet and ripe bananas',
-      imageUrl: `${this.baseUrl}/example-house.jpg`,
+      imageUrl: `${this.baseUrl}/bananas-healing-fruits.jpg`,
       category: 'Fruits',
       stock: 200,
       rating: 4.7,
@@ -36,7 +36,7 @@ export class ProductService {
       name: 'Carrot',
       price: 0.5,
       description: 'Fresh and crunchy carrots',
-      imageUrl: `${this.baseUrl}/example-house.jpg`,
+      imageUrl: `${this.baseUrl}/carrots.jpg`,
       category: 'Vegetables',
       stock: 150,
       rating: 4.3,
@@ -47,7 +47,7 @@ export class ProductService {
       name: 'Tomato',
       price: 1.2,
       description: 'Juicy and ripe tomatoes',
-      imageUrl: `${this.baseUrl}/example-house.jpg`,
+      imageUrl: `${this.baseUrl}/tomatoes.jpg`,
       category: 'Vegetables',
       stock: 120,
       rating: 4.6,
@@ -58,7 +58,7 @@ export class ProductService {
       name: 'Orange',
       price: 1.8,
       description: 'Citrusy and fresh oranges',
-      imageUrl: `${this.baseUrl}/example-house.jpg`,
+      imageUrl: `${this.baseUrl}/oranges.jpg`,
       category: 'Fruits',
       stock: 80,
       rating: 4.8,

@@ -10,10 +10,10 @@
   font-weight: bold;
   margin-bottom: 15px;
 }
-.listing-location::before {
-  content: url('/assets/location-pin.svg') / '';
+.listing-desc::before {
+  content: '' / '';
 }
-.listing-location {
+.listing-desc {
   font-size: 24pt;
   margin-bottom: 15px;
 }

@@ -15,7 +15,7 @@ import {RouterLink, RouterOutlet} from '@angular/router';
         crossorigin
       />
       <h2 class="listing-heading">{{ product.name }}</h2>
-      <p class="listing-location">{{ product.price }}, {{ product.rating }}</p>
+      <p class="listing-price">{{ product.price }}, {{ product.rating }}</p>
       <a [routerLink]="['/products', product.id]">Learn More</a>
     </section>
   `,

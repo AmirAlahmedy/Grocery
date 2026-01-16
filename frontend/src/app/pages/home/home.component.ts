@@ -8,12 +8,6 @@ import { ProductService } from '../../services/product.service';
   selector: 'app-home',
   imports: [CommonModule, ProductCardComponent],
   template: `
-   <section>
-      <form>  
-        <input type="text" placeholder="Filter by name" />
-        <button class="primary" type="button">Search</button>
-      </form>
-    </section>
     <section class="results">
       <app-product-card 
         *ngFor="let product of products"

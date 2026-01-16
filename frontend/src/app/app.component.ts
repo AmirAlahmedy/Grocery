@@ -1,16 +1,13 @@
 import {Component} from '@angular/core';
-import {RouterLink, RouterOutlet} from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './components/header/header.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterLink, RouterOutlet],
+  imports: [RouterOutlet, HeaderComponent],
   template: `
     <main>
-      <a [routerLink]="['/']">
-      <header class="brand-name">
-        <h1>Grocery</h1>
-      </header>
-      </a>
+      <app-header></app-header>
       <section class="content">
         <router-outlet></router-outlet>
       </section>

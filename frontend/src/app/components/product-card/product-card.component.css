@@ -1,30 +1,66 @@
 .listing {
     background: var(--accent-color);
-    border-radius: 30px;
-    padding-bottom: 30px;
+    border-radius: 18px;
+    padding-bottom: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform .18s ease, box-shadow .18s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.04);
   }
   .listing-heading {
     color: var(--primary-color);
-    padding: 10px 20px 0 20px;
+    padding: 16px 20px 0 20px;
+    font-size: 1.6rem;
+    line-height: 1.1;
+    font-weight: 700;
   }
   .listing-photo {
-    height: 250px;
+    height: 260px;
     width: 100%;
     object-fit: cover;
-    border-radius: 30px 30px 0 0;
+    border-radius: 18px 18px 0 0;
   }
-  .listing-location {
+  .listing-price {
     padding: 10px 20px 20px 20px;
+    color: var(--muted-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
-  .listing-location::before {
-    content: url("/assets/location-pin.svg") / "";
+  .listing-price::before {
+    content: url("/assets/pricing-icon.svg") / "";
   }
   section.listing a {
     padding-left: 20px;
     text-decoration: none;
     color: var(--primary-color);
+    display: inline-block;
+    padding-top: 6px;
+    padding-bottom: 12px;
   }
   section.listing a::after {
     content: "\203A";
     margin-left: 5px;
   }
+
+/* Hover / focus */
+.listing:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(96,93,200,0.12);
+}
+
+/* Ensure card content area is distinct */
+.listing .content {
+  padding: 0 20px 18px 20px;
+}
+
+@media (max-width: 600px) {
+  .listing-photo {
+    height: 200px;
+  }
+  .listing-heading {
+    font-size: 1.25rem;
+  }
+}

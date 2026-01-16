@@ -17,7 +17,7 @@ import { Product } from '../../models/product';
       />
       <section class="listing-description">
         <h2 class="listing-heading">{{ product?.name }}</h2>
-        <p class="listing-location">{{ product?.category }}, {{ product?.description }}</p>
+        <p class="listing-desc">{{ product?.category }}, {{ product?.description }}</p>
       </section>
       <section class="listing-features">
         <h2 class="section-heading">About this product</h2>

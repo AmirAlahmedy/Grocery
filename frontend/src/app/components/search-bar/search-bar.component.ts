@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-search-bar',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   template: `
     <div class="search-container">
       <input 
