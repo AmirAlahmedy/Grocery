@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 
 @Data
-@Document
+@Document(collection = "products")
 public class Product {
 
     @JsonSerialize(using = ObjectIdSerializer.class)

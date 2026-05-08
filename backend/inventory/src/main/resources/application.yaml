@@ -4,9 +4,11 @@ server:
 spring:
   application:
     name: inventory
+  webflux:
+    base-path: /inventory
   data:
     mongodb:
-      uri: 'mongodb://localhost:27017/reactive-systems'
+      uri: 'mongodb://localhost:27017/inventory'
   kafka:
     bootstrap-servers: localhost:9092
     producer:
@@ -25,3 +27,8 @@ spring:
             value:
               default:
                 type: com.amir.inventory.domain.Order
+
+logging:
+  level:
+    root: INFO
+    org.springframework: DEBUG
