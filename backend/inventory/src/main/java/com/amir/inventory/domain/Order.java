@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 
 @Data
-@Document
+@Document(collection = "orders")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Order {
 
