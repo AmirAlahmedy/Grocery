@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  inventory-mongo:
+    image: mongo:6.0
+    container_name: inventory-mongo
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - inventory-network
+
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  inventory-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: inventory-app:latest
+    container_name: inventory-app
+    restart: on-failure
+    ports:
+      - "8081:8081"
+    networks:
+      - inventory-network
+    depends_on:
+      inventory-mongo:
+        condition: service_healthy
+
+volumes:
+  mongo-data:
+    name: inventory-mongo-data
+
+networks:
+  inventory-network:
+    driver: bridge

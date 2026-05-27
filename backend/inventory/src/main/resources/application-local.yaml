@@ -8,9 +8,14 @@ spring:
     base-path: /inventory
   data:
     mongodb:
-      host: inventory-mongo
+      host: localhost
       port: 27017
       database: inventory
+
+mongo:
+  host: localhost
+  port: 27017
+  database: inventory
 
   kafka:
     bootstrap-servers: localhost:9092

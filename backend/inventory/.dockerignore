@@ -1,0 +1,11 @@
+target/
+.git
+.gitignore
+.idea
+.vscode
+*.iml
+**/logs
+**/*.log
+mvnw
+mvnw.cmd
+.settings
