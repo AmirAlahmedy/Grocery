@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: inventory
+  webflux:
+    base-path: /inventory
+  data:
+    mongodb:
+      database: inventory

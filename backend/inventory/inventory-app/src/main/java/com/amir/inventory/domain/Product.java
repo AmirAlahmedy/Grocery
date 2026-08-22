@@ -1,6 +1,7 @@
 package com.amir.inventory.domain;
 
 import com.amir.inventory.serdeser.ObjectIdSerializer;
+import lombok.AllArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,6 +11,7 @@ import lombok.Data;
 
 @Data
 @Document(collection = "products")
+@AllArgsConstructor
 public class Product {
 
     @JsonSerialize(using = ObjectIdSerializer.class)

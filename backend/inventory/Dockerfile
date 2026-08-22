@@ -2,7 +2,7 @@ FROM maven:3.9.5-eclipse-temurin-21 AS build
 WORKDIR /workspace/app
 
 COPY pom.xml ./
-COPY src ./src
+COPY inventory-app/src ./src
 RUN mvn -B -DskipTests package
 
 FROM eclipse-temurin:21-jre

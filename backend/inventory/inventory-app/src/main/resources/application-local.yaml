@@ -8,7 +8,7 @@ spring:
     base-path: /inventory
   data:
     mongodb:
-      host: localhost
+      host: inventory-mongo
       port: 27017
       database: inventory
 
