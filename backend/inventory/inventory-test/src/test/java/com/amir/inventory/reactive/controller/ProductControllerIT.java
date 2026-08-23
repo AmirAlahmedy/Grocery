@@ -1,6 +1,6 @@
 package com.amir.inventory.reactive.controller;
 
-import com.amir.inventory.domain.Product;
+import com.amir.inventory.InventoryApplication;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,9 @@ import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(
+    classes = InventoryApplication.class,
+    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient
 @Testcontainers
 @ActiveProfiles("test")
@@ -44,7 +46,7 @@ public class ProductControllerIT {
 
   @Test
   void shouldCreateAndReturnNewProduct() {
-    Product requestBody = new Product("Gaming Laptop", 1200L, 10);
+    Product requestBody = new Product(null, "Gaming Laptop", 1200.00, 10);
 
     // 1. HTTP POST - Create Product
     Product savedProduct =
@@ -59,8 +61,8 @@ public class ProductControllerIT {
             .expectBody(Product.class)
             .value(
                 product -> {
-                  assert product.getId() != null;
-                  assert product.getName().equals("Gaming Laptop");
+                  assert product.id() != null;
+                  assert product.name().equals("Gaming Laptop");
                 })
             .returnResult()
             .getResponseBody();
@@ -68,7 +70,7 @@ public class ProductControllerIT {
     // 2. HTTP GET - Retrieve the created product by ID
     webTestClient
         .get()
-        .uri("/api/products/{id}", savedProduct.getId())
+        .uri("/api/products/{id}", savedProduct.id())
         .exchange()
         .expectStatus()
         .isOk()
@@ -76,10 +78,10 @@ public class ProductControllerIT {
         .contentType(MediaType.APPLICATION_JSON)
         .expectBody()
         .jsonPath("$.id")
-        .isEqualTo(savedProduct.getId())
+        .isEqualTo(savedProduct.id())
         .jsonPath("$.name")
         .isEqualTo("Gaming Laptop")
         .jsonPath("$.price")
-        .isEqualTo(1200L);
+        .isEqualTo(1200.00);
   }
 }
