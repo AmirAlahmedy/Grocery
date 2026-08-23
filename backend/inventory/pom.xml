@@ -8,8 +8,8 @@
 		<version>4.1.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
+	<groupId>com.amir</groupId>
+	<artifactId>inventory</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>inventory</name>
@@ -24,6 +24,7 @@
 	<modules>
 		<module>inventory-test</module>
 		<module>inventory-app</module>
+		<module>inventory-bdd</module>
 	</modules>
 	<scm>
 		<connection/>
