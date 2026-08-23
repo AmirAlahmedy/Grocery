@@ -1,10 +1,7 @@
 package com.amir.inventory.domain;
 
-import com.amir.inventory.serdeser.ObjectIdSerializer;
-import org.bson.types.ObjectId;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,15 +13,5 @@ public class LineItem {
 
     private String productId;
     private int quantity;
-
-    public LineItem setProductId(String productId) {
-        this.productId = productId;
-        return this;
-    }
-
-    public LineItem setQuantity(int quantity) {
-        this.quantity = quantity;
-        return this;
-    }
 
 }
