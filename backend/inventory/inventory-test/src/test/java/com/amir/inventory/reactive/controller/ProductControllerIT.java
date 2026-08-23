@@ -49,7 +49,7 @@ public class ProductControllerIT {
 
     @Test
     void shouldCreateAndReturnNewProduct() {
-        Product requestBody = new Product(null, "Gaming Laptop", 1200L, 10);
+        Product requestBody = new Product("Gaming Laptop", 1200L, 10);
 
         // 1. HTTP POST - Create Product
         Product savedProduct = webTestClient.post()
@@ -75,7 +75,7 @@ public class ProductControllerIT {
                 .expectBody()
                 .jsonPath("$.id").isEqualTo(savedProduct.getId())
                 .jsonPath("$.name").isEqualTo("Gaming Laptop")
-                .jsonPath("$.price").isEqualTo(1200.00);
+                .jsonPath("$.price").isEqualTo(1200L);
 
     }
 

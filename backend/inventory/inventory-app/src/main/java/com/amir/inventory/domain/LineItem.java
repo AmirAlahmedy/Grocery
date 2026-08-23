@@ -14,11 +14,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LineItem {
 
-    @JsonSerialize(using = ObjectIdSerializer.class)
-    private ObjectId productId;
+    private String productId;
     private int quantity;
 
-    public LineItem setProductId(ObjectId productId) {
+    public LineItem setProductId(String productId) {
         this.productId = productId;
         return this;
     }

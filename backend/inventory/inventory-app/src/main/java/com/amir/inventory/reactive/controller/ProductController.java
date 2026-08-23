@@ -4,6 +4,7 @@ import com.amir.inventory.domain.Product;
 import com.amir.inventory.reactive.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -28,6 +29,13 @@ public class ProductController {
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<Product> createProduct(@RequestBody Product product) {
         return productService.createProduct(product);
+    }
+
+    @GetMapping("/products/{id}")
+    public Mono<ResponseEntity<Product>> getProduct(@PathVariable String id) {
+        return productService.findById(id)
+                .map(product -> ResponseEntity.ok(product))
+                .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
 }
